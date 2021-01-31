@@ -16,8 +16,8 @@ namespace DataAccess.Concrate.InMemory
         {
             _cars = new List<Car> 
             {
-                new Car {Id = 1,BrandId="BMV",ColorId=1,ModelYear=2021,DailyPrice=85000,Decription="Manuel,Benzinli"},
-                new Car {Id = 2,BrandId="BMV",ColorId=2,ModelYear=2021,DailyPrice=105000,Decription="otomatik,Diesel"},
+                new Car {Id = 1,BrandId="BMW",ColorId=1,ModelYear=2021,DailyPrice=85000,Decription="Manuel,Benzinli"},
+                new Car {Id = 2,BrandId="BMW",ColorId=2,ModelYear=2021,DailyPrice=105000,Decription="otomatik,Diesel"},
                 new Car {Id = 3,BrandId="Mercedes",ColorId=2,ModelYear=2021,DailyPrice=135000,Decription="Otomatik,Benzinli"},
                 new Car {Id = 4,BrandId="Mercedes",ColorId=3,ModelYear=2021,DailyPrice=75000,Decription="Manuel,Diesel"},
                 new Car {Id = 5,BrandId="Audi",ColorId=3,ModelYear=2021,DailyPrice=85000,Decription="Manuel,Benzinli"}

@@ -13,8 +13,18 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
+            //Test1(carManager, colorManager, brandManager);
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(car.CarName + " --/-- " + car.BrandName + " --/-- " + car.ColorName +" --/-- " + car.DailyPrice);
+                Console.ResetColor();
+            }
 
-           
+        }
+
+        private static void Test1(CarManager carManager, ColorManager colorManager, BrandManager brandManager)
+        {
             Console.WriteLine("Brand Id'si 1 olan arabalar: \nId\tColor Name\tBrand Name\tModel Year\tDaily Price\tDescriptions");
             foreach (var car in carManager.GetCarsByBrandId(1))
             {
@@ -42,7 +52,6 @@ namespace ConsoleUI
             carManager.Add(new Car { BrandId = 1, ColorId = 2, DailyPrice = -300, ModelYear = "2021", Descriptions = "Otomatik Dizel" });
             brandManager.Add(new Brand { BrandName = "a" });
             carManager.Add(new Car { BrandId = 2, ColorId = 3, DailyPrice = 500, ModelYear = "2021", Descriptions = "Otomatik Benzinli" });
-            
         }
     }
 }

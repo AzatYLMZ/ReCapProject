@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utililies.Result;
 using DataAccess.Abstract;
 using Entities.Concrate;
 using System;
@@ -15,46 +17,46 @@ namespace Business.Concrate
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             if (brand.BrandName.Length>2)
             {
                 _brandDal.Add(brand);
-                Console.WriteLine("Marka başarılı bir şekilde eklenmiştir.");
+                return new SuccessResult(Messages.BrandAdded);
             }
             else
             {
-                Console.WriteLine($"Araba ismi minimum 2 karakter olmalıdır.Girdiğin marka ismi : {brand.BrandName}");
+                return new ErrorResult(Messages.BrandInvalid);
             }
             
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            Console.WriteLine("Marka başarılı bir şekilde silindi.");
+            return new SuccessResult(Messages.BrandDeleted);
         }
 
-        public List<Brand> GetAll()
+        public IDataResult <List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
-        public Brand GetById(int id)
+        public IDataResult<Brand> GetById(int id)
         {
-            return _brandDal.Get(c => c.BrandId == id);
+            return new SuccessDataResult<Brand>(_brandDal.Get(c => c.BrandId == id));
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             if (brand.BrandName.Length>2)
             {
                 _brandDal.Update(brand);
-                Console.WriteLine("Marka başarılı bir şekilde güncellenmiştir.");
+                return new SuccessResult(Messages.BrandUpdated);
             }
             else
             {
-                Console.WriteLine($"Araba ismi minimum 2 karakter olmalıdır.Girdiğin marka ismi : {brand.BrandName}");
+                return new ErrorResult(Messages.BrandInvalid);
             }
 
         }

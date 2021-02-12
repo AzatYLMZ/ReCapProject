@@ -60,9 +60,9 @@ namespace Business.Concrate
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
 
-        public IDataResult<List<Car>> GetByModelYear(string year)
+        public IDataResult<List<Car>> GetByModelYear(int year)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ModelYear.Contains(year) == true));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ModelYear == year));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()

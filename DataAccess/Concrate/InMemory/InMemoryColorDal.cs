@@ -16,9 +16,9 @@ namespace DataAccess.Concrate.InMemory
             _colors = new List<Color>
             {
                 
-                new Color{ColorId = 1,ColorName= "Siyah"},
-                new Color{ColorId = 2, ColorName = "Beyaz"},
-                new Color{ColorId = 3, ColorName = "Mavi"}
+                new Color{Id = 1, Name= "Siyah"},
+                new Color{Id = 2, Name = "Beyaz"},
+                new Color{Id = 3, Name = "Mavi"}
             };
 
         }

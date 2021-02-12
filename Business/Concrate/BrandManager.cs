@@ -19,7 +19,7 @@ namespace Business.Concrate
 
         public IResult Add(Brand brand)
         {
-            if (brand.BrandName.Length>2)
+            if (brand.Name.Length>2)
             {
                 _brandDal.Add(brand);
                 return new SuccessResult(Messages.BrandAdded);
@@ -44,12 +44,12 @@ namespace Business.Concrate
 
         public IDataResult<Brand> GetById(int id)
         {
-            return new SuccessDataResult<Brand>(_brandDal.Get(c => c.BrandId == id));
+            return new SuccessDataResult<Brand>(_brandDal.Get(c => c.Id == id));
         }
 
         public IResult Update(Brand brand)
         {
-            if (brand.BrandName.Length>2)
+            if (brand.Name.Length>2)
             {
                 _brandDal.Update(brand);
                 return new SuccessResult(Messages.BrandUpdated);

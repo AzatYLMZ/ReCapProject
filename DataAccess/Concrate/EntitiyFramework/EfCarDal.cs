@@ -28,7 +28,7 @@ namespace DataAccess.Concrate.EntitiyFramework
                                  Id = ca.Id,
                                  BrandId = b.Id,
                                  BrandName = b.Name,
-                                 Name = ca.Name,
+                                 //Name = b.Name,
                                  ColorId = co.Id,
                                  ColorName = co.Name,
                                  DailyPrice = ca.DailyPrice,

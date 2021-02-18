@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utililies.Result;
 using DataAccess.Abstract;
@@ -18,10 +19,14 @@ namespace Business.Concrate
         {
             _customerDal = customerDal;
         }
+
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
-            ValidationTool.Validate(new CustomerValidator(), customer);
+            //ValidationTool.Validate(new CustomerValidator(), customer);
+
             _customerDal.Add(customer);
+
             return new SuccessResult(Messages.CustomerAdded);
         }
 
@@ -36,10 +41,13 @@ namespace Business.Concrate
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll());
         }
 
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Update(Customer customer)
         {
-            ValidationTool.Validate(new CustomerValidator(), customer);
+            //ValidationTool.Validate(new CustomerValidator(), customer);
+
             _customerDal.Update(customer);
+
             return new SuccessResult(Messages.CustomerUpdated);
         }
     }

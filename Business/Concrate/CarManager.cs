@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utililies.Result;
 using DataAccess.Abstract;
@@ -22,10 +23,11 @@ namespace Business.Concrate
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car )
         {
             
-            ValidationTool.Validate(new CarValidator(), car);
+            //ValidationTool.Validate(new CarValidator(), car);
 
             _carDal.Add(car);
 
@@ -79,9 +81,10 @@ namespace Business.Concrate
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId));
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
-            ValidationTool.Validate(new CarValidator(), car);
+            //ValidationTool.Validate(new CarValidator(), car);
 
             _carDal.Update(car);
 
